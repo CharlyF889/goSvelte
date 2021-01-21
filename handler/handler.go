@@ -95,3 +95,16 @@ func Index(w http.ResponseWriter, r *http.Request, ps httprouter.Params) error {
 
 	return nil
 }
+func Shop(w http.ResponseWriter, r *http.Request, ps httprouter.Params) error {
+	fmt.Println("Connection")
+
+	base := filepath.Join("templates", "base.html")
+	shop := filepath.Join("templates", "shop.html")
+	tmpl, err := template.ParseFiles(base, shop)
+	if err != nil {
+		panic(err)
+	}
+	tmpl.ExecuteTemplate(w, "base", nil)
+
+	return nil
+}
